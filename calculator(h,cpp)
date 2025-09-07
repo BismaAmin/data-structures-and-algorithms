@@ -1,0 +1,104 @@
+#ifndef CALCULATOR_H
+#define CALCULATOR_H
+
+class Calculator{
+    public:
+    
+    static int count;
+    
+    float add(float a, float b);
+    float subtract(float a, float b);
+    float quotient(float a, float b);
+    float reminder(float a, float b);
+    float percentage(float a, float b);
+    void counter();
+};
+
+#endif
+
+//#include "calculator.h"
+#include<iostream>
+#include<math.h>
+using namespace std;
+
+void logoperation(const string& op){
+    cout<<"the operation performed is = "<<op<<endl;
+}
+
+float Calculator :: add(float a, float b){
+    float s= a+b;
+    logoperation("sum");
+    count++;
+    return s;
+}
+
+float Calculator :: subtract(float a, float b){
+    float su = a-b;
+    logoperation("subtract");
+    count++;
+    return su;
+}
+
+float Calculator :: quotient(float a, float b){
+    if(b==0){
+        cout<<"the number is zero "<<endl;
+        return 0;
+    }
+    
+    float q = a/b;
+    logoperation("quotient");
+    count++;
+    return q;
+}
+
+float Calculator :: reminder (float a , float b){
+    if (b ==0){
+        cout<<"number is zero "<<endl;
+        return 0;
+    }
+    float r = fmod(a,b);
+    logoperation("reminder ");
+    count++;
+    return r;
+}
+
+float Calculator :: percentage(float a, float b){
+    if (b == 0 ){
+        cout<<"the number is zero "<<endl;
+        return 0;
+    }
+    float p = (a*b)/100;
+    logoperation("percentage ");
+    count++;
+    return p;
+}
+int Calculator:: count = 0;
+void Calculator:: counter(){
+    cout<<"the count is = "<<count<<endl;
+}
+
+//#include "calculator.h"
+#include<iostream>
+using namespace std;
+int main(){
+    float x,y;
+    cout<<"the number is = ";
+    cin>>x;
+    cout<<"the number is = ";
+    cin>>y;
+    Calculator cal;
+    
+    float s= cal.add(x,y);
+    float su = cal.subtract(x,y);
+    float q =cal.quotient(x,y);
+    float r= cal.reminder(x,y);
+    float p= cal.percentage(x,y);
+    cout<<"sum is = "<<s<<endl;
+    cout<<"sub is = "<<su<<endl;
+    cout<<"quo is = "<<q<<endl;
+    cout<<"rem is = "<<r<<endl;
+    cout<<"per is = "<<p<<endl;
+    
+    cal.counter();
+}
+
