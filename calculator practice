@@ -1,0 +1,88 @@
+#include<iostream>
+#include<math.h>
+using namespace std;
+class calculator{
+    public:
+    static int count;
+    
+    static double sum(double a, double b){
+        double add = a+b;
+        count++;
+        return add;
+    }
+    static double sub(double a, double b){
+        double sub = a-b;
+        count++;
+        return sub;
+    }
+    static double quo(double a, double b){
+        if(b==0){
+            cout<<"the b is zero";
+        }
+        double q = a/b;
+        count++;
+        return q;
+    }
+    static double rem(double a, double b){
+        if(b==0){
+            cout<<"the b is zero";
+        }
+        double r=fmod(a,b);
+        count++;
+        return r;
+    }
+    static double per(double a, double b){
+        if(b==0){
+            cout<<"the b is zero";
+        }
+        double per = (a*b)/100;
+        count++;
+        return per;
+    }
+    static int operationc(){
+        return count;
+    }
+};
+
+int calculator::count = 0;
+int main(){
+    int x,y;
+    cout<<"enter the value =";
+    cin>>x;
+    cout<<"enter the value =";
+    cin>>y;
+    char op;
+    cout<<endl;
+    do{
+    cout<<"there are sum(A)"<<endl;
+    cout<<"there are sub(B)"<<endl;
+    cout<<"there are quo(Q)"<<endl;
+    cout<<"there are rem(R)"<<endl;
+    cout<<"there are per(P)"<<endl;
+    cout<<"there are per(P)"<<endl;
+    cout<<"there is exit(E)"<<endl;
+    cout<<"Enter the option = ";
+    cin>>op;
+    
+    switch(op){
+    case 'A':
+         cout<<"the sum is = "<<calculator::sum(x,y)<<endl;
+         break;
+    case 'B':
+         cout<<"the sub is = "<<calculator::sub(x,y)<<endl;
+         break;
+    case 'Q':
+         cout<<"the quo is = "<<calculator::quo(x,y)<<endl;
+         break;
+    case 'R':
+         cout<<"the rem is = "<<calculator::rem(x,y)<<endl;
+         break;
+    case 'P':
+         cout<<"the per is = "<<calculator::per(x,y)<<endl;
+         break;
+    default:
+         cout<<"invalid "<<endl;
+}
+}while(op!='E');
+
+cout<<"the operation count is = "<<calculator::operationc
