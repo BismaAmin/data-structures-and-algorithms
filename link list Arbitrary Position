@@ -1,0 +1,53 @@
+#include<iostream>
+using namespace std;
+struct Node{
+    int data;
+    Node *next;
+};
+void insertAtGiven(Node *&head , int value, int pos){
+    Node *newNode = new Node();
+    newNode->data = value;
+    if(pos==1){
+        newNode->next=head;
+        head=newNode;
+        return;
+    }
+    
+    Node *temp = head;
+    int count = 1;
+    if(count<pos-1 && temp!=NULL){
+        temp=temp->next;
+        count++;
+    }
+    
+    if(temp==NULL){
+        cout<<"invalid position";
+        delete newNode;
+    }
+    else{
+        newNode->next=temp->next;
+        temp->next=newNode;
+        
+    }
+}
+
+void display(Node *head){
+    Node *temp = head;
+    while(temp!=NULL){
+        cout<<"the elements are = "<<temp->data<<endl;
+        temp=temp->next;
+    }
+}
+
+int main(){
+    Node *head = NULL;
+    insertAtGiven(head,10,1);
+    insertAtGiven(head,20,2);
+    insertAtGiven(head,40,3);
+    
+    cout<<"after insertion at give point"<<endl;
+    insertAtGiven(head,30,3);
+    
+    display(head);
+    
+}
