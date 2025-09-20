@@ -50,21 +50,19 @@ void deleteAtGiven(Node *&head, int pos) {
         temp = temp->next;
     }
 
-    if (temp == NULL) {
+    if (temp == NULL || temp->next == NULL) {
         cout << "Invalid position" << endl;
         return;
     }
 
-    // unlink node
-    if (temp->prev != NULL) {
-        temp->prev->next = temp->next;
+    Node *del = temp->next;
+    temp->next = del->next;
+    if(del->next!=NULL)
+    {
+        del->next->prev = temp;
     }
-    if (temp->next != NULL) {
-        temp->next->prev = temp->prev;
-    }
-
-    cout << "Deletion is done of " << temp->data << endl;
-    delete temp;
+    cout << "Deletion is done of " << del->data << endl;
+    delete del;
 }
 
 // Display the list
@@ -95,3 +93,4 @@ int main() {
 
     return 0;
 }
+
