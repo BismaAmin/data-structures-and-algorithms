@@ -43,13 +43,14 @@ void deleteAtEnd(Node *&head) {
     }
 
     Node *temp = head;
-    while (temp->next != NULL) {
+    while (temp->next->next != NULL) {
         temp = temp->next;
     }
 
-    cout << "Deletion is done of " << temp->data << endl;
-    temp->prev->next = NULL;
-    delete temp;
+    Node *del = temp->next;
+    temp->next = NULL;
+    cout << "Deletion is done of " << del->data << endl;
+    delete del;
 }
 
 // Display the list
@@ -79,3 +80,4 @@ int main() {
 
     return 0;
 }
+
